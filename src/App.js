@@ -111,6 +111,7 @@ function Chat({socket}){
 
   useEffect(() => {
     socket.on("CHAT", data => {
+      data.date = Date(data.date)
       setResponseChat((prev)=>[...prev, data]);
     });
     
@@ -129,7 +130,7 @@ function Chat({socket}){
           <div class="box-mini">
           <div>
             <h4> {chat.name} </h4> 
-            <p> ({Date(chat.date)}) </p>
+            <p> {chat.date} </p>
             <p> "{chat.message}" </p>
             </div>
           </div>)} 
